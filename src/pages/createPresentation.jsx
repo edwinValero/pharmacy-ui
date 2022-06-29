@@ -5,6 +5,13 @@ import * as Yup from "yup";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
+const yupValidation = Yup.object({
+  name: Yup.string().max(255).required("Required"),
+  product: Yup.string().max(255).required("Required"),
+  amount: Yup.number().required("Required"),
+  price: Yup.number().required("Required"),
+});
+
 // And now we can use these
 export const CreatePresentation = () => {
   return (
@@ -17,12 +24,7 @@ export const CreatePresentation = () => {
           price: "",
           product: "",
         }}
-        validationSchema={Yup.object({
-          name: Yup.string().max(255).required("Required"),
-          product: Yup.string().max(255).required("Required"),
-          amount: Yup.number().required("Required"),
-          price: Yup.number().required("Required"),
-        })}
+        validationSchema={yupValidation}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
