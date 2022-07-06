@@ -1,7 +1,7 @@
 {
   "name": "pharmacy",
   "version": "0.1.0",
-  "homepage": "https://edwinvalero.github.io/pharmacy-ui.github.io",
+  "homepage": "https://edwinValero.github.io/pharmacy-ui",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",

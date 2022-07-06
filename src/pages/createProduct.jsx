@@ -179,7 +179,7 @@ export const CreateProduct = () => {
                           margin="normal"
                           id="price"
                           name={`presentations[${index}].price`}
-                          label="Precio"
+                          label="Precio de venta"
                           value={values.presentations[index].price}
                           onChange={handleChange}
                           error={

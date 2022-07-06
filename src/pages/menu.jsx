@@ -8,7 +8,7 @@ import { CreateProduct } from "./createProduct";
 import { CreatePresentation } from "./createPresentation";
 import ProductTableNavigate from "./productTableNavigate";
 
-export function TabPanel(props) {
+function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -56,19 +56,19 @@ export default function BasicTabs() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Crear Producto" {...a11yProps(0)} />
-          <Tab label="Crear Presentacion" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Productos" {...a11yProps(0)} />
+          <Tab label="Crear Producto" {...a11yProps(1)} />
+          <Tab label="Crear Presentacion" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <CreateProduct></CreateProduct>
+        <ProductTableNavigate></ProductTableNavigate>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <CreatePresentation></CreatePresentation>
+        <CreateProduct></CreateProduct>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <ProductTableNavigate></ProductTableNavigate>
+        <CreatePresentation></CreatePresentation>
       </TabPanel>
     </Box>
   );

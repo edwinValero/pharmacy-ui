@@ -1,64 +1,26 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
-import { styled, alpha } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
-import InputBase from "@mui/material/InputBase";
 import ProductTable from "./productTable";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
+import {
+  IconButton,
+  InputAdornment,
+  Pagination,
+  TextField,
+} from "@mui/material";
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "80%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
-}));
-
-function createProduct(name, taxes, barCode, presentations) {
+function createProduct(id, name, taxes, barCode, presentations) {
   return {
+    id,
     name,
     taxes,
     barCode,
     presentations,
   };
 }
-function createPresentations(price1, price2, price3) {
+function createPresentations(product, price1, price2, price3) {
   return [
     {
       name: "Unidad",
@@ -79,18 +41,40 @@ function createPresentations(price1, price2, price3) {
 }
 
 export default function ProductTableNavigate() {
-  let rows = [
-    createProduct("producto1", 19, 1234, createPresentations(100, 900, 4500)),
-    createProduct("producto2", 19, 1235, createPresentations(100, 900, 4500)),
-    createProduct("producto3", 19, 1236, createPresentations(100, 900, 4500)),
+  const products = [
+    createProduct(
+      1,
+      "producto1",
+      19,
+      1234,
+      createPresentations(100, 900, 4500)
+    ),
+    createProduct(
+      2,
+      "producto2",
+      19,
+      1235,
+      createPresentations(100, 900, 4500)
+    ),
+    createProduct(
+      3,
+      "producto3",
+      19,
+      1236,
+      createPresentations(100, 900, 4500)
+    ),
   ];
+  const stocks = new Map();
+  stocks.set(1, 10);
+  stocks.set(2, 20);
+  stocks.set(3, 30);
 
   return (
     <Box>
       <Box sx={{ "& > :not(style)": { m: 1 } }}>
         <TextField
           sx={{ width: "90%" }}
-          label="With normal TextField"
+          label="Buscar por Nombre o Codigo de barras"
           InputProps={{
             endAdornment: (
               <InputAdornment>
@@ -107,7 +91,18 @@ export default function ProductTableNavigate() {
         </Fab>
       </Box>
       <Box>
-        <ProductTable rows={rows}></ProductTable>
+        <ProductTable products={products} stocks={stocks}></ProductTable>
+      </Box>
+      <Box
+        sx={{
+          p: 2,
+          alignItems: "center",
+          justify: "center",
+          display: "flex",
+          "justify-content": "center",
+        }}
+      >
+        <Pagination count={10} color="primary" />
       </Box>
     </Box>
   );
