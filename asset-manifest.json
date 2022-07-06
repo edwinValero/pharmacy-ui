@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pharmacy-ui.github.io/static/css/main.073c9b0a.css",
-    "main.js": "/pharmacy-ui.github.io/static/js/main.6b86f528.js",
-    "static/js/787.8f0665e3.chunk.js": "/pharmacy-ui.github.io/static/js/787.8f0665e3.chunk.js",
-    "index.html": "/pharmacy-ui.github.io/index.html",
-    "main.073c9b0a.css.map": "/pharmacy-ui.github.io/static/css/main.073c9b0a.css.map",
-    "main.6b86f528.js.map": "/pharmacy-ui.github.io/static/js/main.6b86f528.js.map",
-    "787.8f0665e3.chunk.js.map": "/pharmacy-ui.github.io/static/js/787.8f0665e3.chunk.js.map"
+    "main.css": "/pharmacy-ui/static/css/main.073c9b0a.css",
+    "main.js": "/pharmacy-ui/static/js/main.ce84082c.js",
+    "static/js/787.8f0665e3.chunk.js": "/pharmacy-ui/static/js/787.8f0665e3.chunk.js",
+    "index.html": "/pharmacy-ui/index.html",
+    "main.073c9b0a.css.map": "/pharmacy-ui/static/css/main.073c9b0a.css.map",
+    "main.ce84082c.js.map": "/pharmacy-ui/static/js/main.ce84082c.js.map",
+    "787.8f0665e3.chunk.js.map": "/pharmacy-ui/static/js/787.8f0665e3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.6b86f528.js"
+    "static/js/main.ce84082c.js"
   ]
 }
