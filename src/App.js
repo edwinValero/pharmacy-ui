@@ -1,6 +1,6 @@
 import "./App.css";
 import Box from "@mui/material/Box";
-import BasicTabs from "./pages/menu";
+import BasicTabs from "./pages/components/menu";
 
 function App() {
   return (
