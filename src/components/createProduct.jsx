@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Formik, Form, FieldArray, getIn } from "formik";
 import * as Yup from "yup";
 import Button from "@mui/material/Button";
@@ -7,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import FormRow from "./FormRow";
 
 const ERROR_NUMBER = "Debe ser un número!";
 const REQUIRED = "Requeridó";
@@ -21,6 +21,7 @@ const yupPresentationValidation = Yup.array()
   .of(presentationSchema)
   .min(1, "Minimo una presentación")
   .required("Debes tener presentaciones");
+
 const yupValidation = Yup.object({
   name: Yup.string().max(255).required(REQUIRED),
   taxes: Yup.number().typeError(ERROR_NUMBER).required(REQUIRED),
@@ -120,10 +121,10 @@ export const CreateProduct = () => {
                       <AddCircleIcon color="secondary" />
                     </IconButton>
                     {values.presentations.map((item, index) => (
-                      <div key={index}>
+                      <FormRow key={index}>
                         {/** both these conventions do the same */}
                         <TextField
-                          sx={{ width: 1 / 3 }}
+                          sx={{ width: 1 / 3, mr: 1 }}
                           margin="normal"
                           id="presentation"
                           name={`presentations[${index}].presentation`}
@@ -155,7 +156,7 @@ export const CreateProduct = () => {
                         />
 
                         <TextField
-                          sx={{ width: 1 / 5 }}
+                          sx={{ width: 1 / 5, mr: 1 }}
                           margin="normal"
                           id="amount"
                           name={`presentations[${index}].amount`}
@@ -175,7 +176,7 @@ export const CreateProduct = () => {
                         />
 
                         <TextField
-                          sx={{ width: 1 / 5 }}
+                          sx={{ width: 1 / 5, mr: 1 }}
                           margin="normal"
                           id="price"
                           name={`presentations[${index}].price`}
@@ -196,7 +197,7 @@ export const CreateProduct = () => {
                         <IconButton onClick={() => arrayHelpers.remove(index)}>
                           <DeleteIcon color="secondary" />
                         </IconButton>
-                      </div>
+                      </FormRow>
                     ))}
                   </div>
                 );
@@ -210,7 +211,7 @@ export const CreateProduct = () => {
               margin="normal"
               sx={{ width: 1 / 3 }}
             >
-              Submit
+              Guardar
             </Button>
           </Form>
         )}
@@ -218,5 +219,3 @@ export const CreateProduct = () => {
     </>
   );
 };
-
-ReactDOM.render(<CreateProduct />, document.getElementById("root"));

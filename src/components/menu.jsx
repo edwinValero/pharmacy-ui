@@ -1,12 +1,14 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import { CreateProduct } from "./createProduct";
-import { CreatePresentation } from "./createPresentation";
-import ProductTableNavigate from "./productTableNavigate";
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import { CreateProduct } from './createProduct';
+import { CreatePresentation } from './createPresentation';
+import { CreateReception } from './createReception';
+import ProductTableNavigate from '../pages/products';
+import ReceptionTableNavigate from './receptionTableNavigate';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -37,7 +39,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
@@ -49,8 +51,8 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+    <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -59,6 +61,8 @@ export default function BasicTabs() {
           <Tab label="Productos" {...a11yProps(0)} />
           <Tab label="Crear Producto" {...a11yProps(1)} />
           <Tab label="Crear Presentacion" {...a11yProps(2)} />
+          <Tab label="Recepciones" {...a11yProps(3)} />
+          <Tab label="Recepcionar producto" {...a11yProps(4)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -69,6 +73,12 @@ export default function BasicTabs() {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <CreatePresentation></CreatePresentation>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <ReceptionTableNavigate></ReceptionTableNavigate>
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <CreateReception></CreateReception>
       </TabPanel>
     </Box>
   );

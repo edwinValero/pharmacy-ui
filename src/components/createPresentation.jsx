@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import Button from "@mui/material/Button";
@@ -97,7 +96,7 @@ export const CreatePresentation = () => {
               type="submit"
               margin="normal"
             >
-              Submit
+              Guardar
             </Button>
           </Form>
         )}
@@ -105,5 +104,3 @@ export const CreatePresentation = () => {
     </>
   );
 };
-
-ReactDOM.render(<CreatePresentation />, document.getElementById("root"));
