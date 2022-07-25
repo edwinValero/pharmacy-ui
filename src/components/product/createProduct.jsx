@@ -1,15 +1,15 @@
-import React from "react";
-import { Formik, Form, FieldArray, getIn } from "formik";
-import * as Yup from "yup";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import FormRow from "./FormRow";
+import React from 'react';
+import { Formik, Form, FieldArray, getIn } from 'formik';
+import * as Yup from 'yup';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import FormRow from '../FormRow';
 
-const ERROR_NUMBER = "Debe ser un número!";
-const REQUIRED = "Requeridó";
+const ERROR_NUMBER = 'Debe ser un número!';
+const REQUIRED = 'Requeridó';
 
 const presentationSchema = Yup.object().shape({
   presentation: Yup.string().max(255).required(REQUIRED),
@@ -19,8 +19,8 @@ const presentationSchema = Yup.object().shape({
 
 const yupPresentationValidation = Yup.array()
   .of(presentationSchema)
-  .min(1, "Minimo una presentación")
-  .required("Debes tener presentaciones");
+  .min(1, 'Minimo una presentación')
+  .required('Debes tener presentaciones');
 
 const yupValidation = Yup.object({
   name: Yup.string().max(255).required(REQUIRED),
@@ -36,14 +36,14 @@ export const CreateProduct = () => {
       <h1>Create Product</h1>
       <Formik
         initialValues={{
-          name: "",
-          taxes: "",
-          barCode: "",
+          name: '',
+          taxes: '',
+          barCode: '',
           presentations: [
             {
-              presentation: "",
-              amount: "",
-              price: "",
+              presentation: '',
+              amount: '',
+              price: '',
             },
           ],
         }}
@@ -112,9 +112,9 @@ export const CreateProduct = () => {
                     <IconButton
                       onClick={() =>
                         arrayHelpers.push({
-                          presentation: "",
-                          amount: "",
-                          price: "",
+                          presentation: '',
+                          amount: '',
+                          price: '',
                         })
                       }
                     >
@@ -134,23 +134,23 @@ export const CreateProduct = () => {
                           error={
                             getIn(
                               touched,
-                              `presentations[${index}].presentation`
+                              `presentations[${index}].presentation`,
                             ) &&
                             Boolean(
                               getIn(
                                 errors,
-                                `presentations[${index}].presentation`
-                              )
+                                `presentations[${index}].presentation`,
+                              ),
                             )
                           }
                           helperText={
                             getIn(
                               touched,
-                              `presentations[${index}].presentation`
+                              `presentations[${index}].presentation`,
                             ) &&
                             getIn(
                               errors,
-                              `presentations[${index}].presentation`
+                              `presentations[${index}].presentation`,
                             )
                           }
                         />
@@ -166,7 +166,7 @@ export const CreateProduct = () => {
                           error={
                             getIn(touched, `presentations[${index}].amount`) &&
                             Boolean(
-                              getIn(errors, `presentations[${index}].amount`)
+                              getIn(errors, `presentations[${index}].amount`),
                             )
                           }
                           helperText={
@@ -186,7 +186,7 @@ export const CreateProduct = () => {
                           error={
                             getIn(touched, `presentations[${index}].price`) &&
                             Boolean(
-                              getIn(errors, `presentations[${index}].price`)
+                              getIn(errors, `presentations[${index}].price`),
                             )
                           }
                           helperText={

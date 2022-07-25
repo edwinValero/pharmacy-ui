@@ -1,8 +1,8 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { CreateProduct } from './components/createProduct';
+import { CreateProduct } from './components/product/createProduct';
 import ProductTableNavigate from './pages/products';
-import { CreateReception } from './components/createReception';
+import { CreateReception } from './components/reception/createReception';
 import ReceptionTableNavigate from './components/receptionTableNavigate';
 import Layout from './pages/Layout';
 

@@ -1,9 +1,8 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
-import ProductTable from '../components/productTable';
+import ProductTable from '../components/product/productTable';
 import {
   IconButton,
   InputAdornment,
@@ -12,21 +11,29 @@ import {
   TextField,
 } from '@mui/material';
 import { useQuery } from 'react-query';
+import { useState } from 'react';
+import { Products } from '../models/products';
 
 export default function ProductTableNavigate() {
-  const { isLoading, error, data } = useQuery(['products'], () =>
-    fetch('http://localhost:3010/api/products').then((res) => res.json()),
+  const [pageNumber, setPageNumber] = useState(1);
+  const { isLoading, isError, error, data } = useQuery<Products, Error>(
+    ['products', pageNumber],
+    () =>
+      fetch(`http://localhost:3010/api/products?page=${pageNumber}`).then(
+        (res) => res.json(),
+      ),
   );
-  const products = data.items;
 
-  if (error) {
-    return <div>{JSON.stringify(error)}</div>;
-  }
+  const products = data?.items || [];
+  const handlePagination = (
+    event: React.ChangeEvent<unknown>,
+    value: number,
+  ) => {
+    setPageNumber(value);
+  };
+  const totalPages = data?.meta?.totalPages || 0;
 
   const stocks = new Map();
-  stocks.set(1, 10);
-  stocks.set(2, 20);
-  stocks.set(3, 30);
 
   return (
     <Box>
@@ -52,6 +59,8 @@ export default function ProductTableNavigate() {
       <Box>
         {isLoading ? (
           <LinearProgress />
+        ) : isError ? (
+          <h2>{error?.message}</h2>
         ) : (
           <ProductTable products={products} stocks={stocks}></ProductTable>
         )}
@@ -65,7 +74,12 @@ export default function ProductTableNavigate() {
           'justify-content': 'center',
         }}
       >
-        <Pagination count={10} color="primary" />
+        <Pagination
+          count={totalPages}
+          page={pageNumber}
+          onChange={handlePagination}
+          color="primary"
+        />
       </Box>
     </Box>
   );

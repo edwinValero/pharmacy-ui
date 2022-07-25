@@ -4,9 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { CreateProduct } from './createProduct';
+import { CreateProduct } from './product/createProduct';
 import { CreatePresentation } from './createPresentation';
-import { CreateReception } from './createReception';
+import { CreateReception } from './reception/createReception';
 import ProductTableNavigate from '../pages/products';
 import ReceptionTableNavigate from './receptionTableNavigate';
 

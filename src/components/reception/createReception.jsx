@@ -1,33 +1,33 @@
-import React from "react";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import { EditPresentation } from "./editPresentation";
-import { Box } from "@mui/system";
-import { Divider, Grid } from "@mui/material";
+import React from 'react';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { EditPresentation } from '../editPresentation';
+import { Box } from '@mui/system';
+import { Divider, Grid } from '@mui/material';
 
 const yupValidation = Yup.object({
-  name: Yup.string().max(255).required("Required"),
-  product: Yup.string().max(255).required("Required"),
-  amount: Yup.number().required("Required"),
-  price: Yup.number().required("Required"),
+  name: Yup.string().max(255).required('Required'),
+  product: Yup.string().max(255).required('Required'),
+  amount: Yup.number().required('Required'),
+  price: Yup.number().required('Required'),
 });
 
 function createPresentations(price1, price2, price3) {
   return [
     {
-      presentation: "Unidad",
+      presentation: 'Unidad',
       amount: 1,
       price: price1,
     },
     {
-      presentation: "Sobre",
+      presentation: 'Sobre',
       amount: 10,
       price: price2,
     },
     {
-      presentation: "Caja",
+      presentation: 'Caja',
       amount: 50,
       price: price3,
     },
@@ -97,12 +97,12 @@ export const CreateReception = () => {
           <Grid Paper xs={6}>
             <Formik
               initialValues={{
-                taxPrice: "",
-                tax: "",
-                withOutTax: "",
-                amount: "",
-                provider: "",
-                billNumber: "",
+                taxPrice: '',
+                tax: '',
+                withOutTax: '',
+                amount: '',
+                provider: '',
+                billNumber: '',
               }}
               validationSchema={yupValidation}
               onSubmit={(values, { setSubmitting }) => {

@@ -1,11 +1,11 @@
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import Paper from "@mui/material/Paper";
-import TableRow from "./TableRow";
-import TableCell from "./TableCell";
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import Paper from '@mui/material/Paper';
+import TableRow from '../TableRow';
+import TableCell from '../TableCell';
 export default function ReceptionTable(props) {
   const { receptions } = props;
 
@@ -23,7 +23,7 @@ export default function ReceptionTable(props) {
         <TableBody>
           {receptions.map((row) => (
             <React.Fragment>
-              <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+              <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
                 <TableCell component="th" scope="row">
                   {row.ticket}
                 </TableCell>
